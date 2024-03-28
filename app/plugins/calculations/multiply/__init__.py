@@ -1,5 +1,5 @@
+# app/plugins/calculations/multiply/__init__.py
 from app.command.base_command import BaseCommand
-from app.calculation_history import CalculationHistory
 
 class MultiplyCommand(BaseCommand):
     def execute(self, *args):
@@ -9,9 +9,8 @@ class MultiplyCommand(BaseCommand):
             for num in numbers:
                 result *= num
             operation = " * ".join(map(str, numbers)) + f" = {result}"
-            history_instance = CalculationHistory()
-            history_instance.add_record(operation, result)
-            print(operation)
+            self.history_instance.add_record(operation, result)
+            print(operation)  # Optionally, print the operation and result
             return result
         except ValueError:
             print("Error: All arguments must be numbers.")
