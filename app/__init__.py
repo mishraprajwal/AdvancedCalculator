@@ -1,11 +1,10 @@
-# app/__init__.py
 import os
 import sys
 import pkgutil
 import importlib
 from dotenv import load_dotenv
 from app.command import CommandHandler, Command
-from app.advanced_logging_utility import AdvancedLoggingUtility  # Ensure this is correctly imported
+from app.advanced_logging_utility import AdvancedLoggingUtility
 
 class App:
     def __init__(self):
@@ -17,11 +16,11 @@ class App:
         self.command_handler = CommandHandler()
 
     def configure_logging(self):
-        logging_conf_path = 'advanced_logging.conf'  # Adjusted for consistency
+        logging_conf_path = 'advanced_logging.conf'
         if os.path.exists(logging_conf_path):
-            AdvancedLoggingUtility.configure_logging()  # Utilize AdvancedLoggingUtility for setup
+            AdvancedLoggingUtility.configure_logging()
         else:
-            AdvancedLoggingUtility.configure_basic()  # Assume a basic setup method exists for fallback
+            AdvancedLoggingUtility.configure_basic()
         AdvancedLoggingUtility.info("Logging configured.")
 
     def load_environment_variables(self):
@@ -34,17 +33,30 @@ class App:
 
     def load_plugins(self):
         plugins_package = 'app.plugins'
-        plugins_path = plugins_package.replace('.', '/')
-        if not os.path.exists(plugins_path):
-            AdvancedLoggingUtility.warning(f"Plugins directory '{plugins_path}' not found.")
+        calculation_path = os.path.join(plugins_package.replace('.', '/'), 'calculations')
+        history_path = os.path.join(plugins_package.replace('.', '/'), 'history')
+        other_plugins_path = plugins_package.replace('.', '/')
+        
+        self.load_plugin_commands(calculation_path, f'{plugins_package}.calculations')
+        self.load_plugin_commands(history_path, f'{plugins_package}.history')
+        
+        self.load_plugin_commands(other_plugins_path,f'{plugins_package}')
+
+                    
+    def load_plugin_commands(self, path, package):
+        if not os.path.exists(path):
+            AdvancedLoggingUtility.warning(f"Directory '{path}' not found.")
             return
-        for _, plugin_name, is_pkg in pkgutil.iter_modules([plugins_path]):
-            if is_pkg:
-                try:
-                    plugin_module = importlib.import_module(f'{plugins_package}.{plugin_name}')
-                    self.register_plugin_commands(plugin_module, plugin_name)
-                except ImportError as e:
-                    AdvancedLoggingUtility.error(f"Error importing plugin {plugin_name}: {e}")
+        for _, plugin_name, _ in pkgutil.iter_modules([path]):
+            try:
+                plugin_module = importlib.import_module(f'{package}.{plugin_name}')
+                command_instance = getattr(plugin_module, f'{plugin_name.capitalize()}Command')()
+                self.command_handler.register_command(plugin_name, command_instance)
+                AdvancedLoggingUtility.info(f"Command '{plugin_name}' from plugin '{plugin_name}' registered.")
+            except ImportError as e:
+                AdvancedLoggingUtility.error(f"Error importing plugin {plugin_name}: {e}")
+
+        
 
     def register_plugin_commands(self, plugin_module, plugin_name):
         for item_name in dir(plugin_module):
@@ -61,15 +73,18 @@ class App:
                 cmd_input = input(">>> ").strip()
                 if cmd_input.lower() == 'exit':
                     AdvancedLoggingUtility.info("Application exit.")
-                    sys.exit(0)  # Use sys.exit(0) for a clean exit, indicating success.
+                    sys.exit(0)
                 try:
                     self.command_handler.execute_command(cmd_input)
                 except KeyError:
                     AdvancedLoggingUtility.error(f"Unknown command: {cmd_input}")
-                    sys.exit(1)  # Use a non-zero exit code to indicate failure or incorrect command.
+                    print(f"Unknown command: {cmd_input}")
+                except Exception as e:
+                    AdvancedLoggingUtility.error(f"Error during command execution: {e}")
+                    print(f"Error during command execution: {e}")
         except KeyboardInterrupt:
             AdvancedLoggingUtility.info("Application interrupted and exiting gracefully.")
-            sys.exit(0)  # Assuming a KeyboardInterrupt should also result in a clean exit.
+            sys.exit(0)
         finally:
             AdvancedLoggingUtility.info("Application shutdown.")
 
