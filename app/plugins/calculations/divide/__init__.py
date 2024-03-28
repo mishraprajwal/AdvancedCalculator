@@ -1,5 +1,6 @@
 # app/plugins/calculations/divide/__init__.py
 from app.command.base_command import BaseCommand
+from app.advanced_logging_utility import AdvancedLoggingUtility  # Ensure correct import path
 
 class DivideCommand(BaseCommand):
     def execute(self, *args):
@@ -14,7 +15,9 @@ class DivideCommand(BaseCommand):
                 result /= num
             operation = " / ".join(map(str, numbers)) + f" = {result}"
             self.history_instance.add_record(operation, result)
-            print(operation)  # Optionally, print the operation and result
+            AdvancedLoggingUtility.info(f"Division operation successful: {operation}")
             return result
         except ValueError as e:
-            print(f"Error: {e}")
+            error_msg = f"Error in division operation: {e}"
+            AdvancedLoggingUtility.error(error_msg)
+            return error_msg  # Returning the error message; adjust as needed for your application
