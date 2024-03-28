@@ -1,60 +1,79 @@
-# Advanced Calculator Application
+<div align="center">
 
-## Overview
+# 🧮 Advanced Calculator Application
 
-The Advanced Calculator is a powerful CLI application designed for performing arithmetic operations with a focus on extensibility and ease of use. Leveraging a dynamic plugin system, the application allows for easy integration of new commands and functionalities. Utilizing Pandas for calculation history management and incorporating advanced logging practices, it offers a robust solution for arithmetic operations and beyond.
+An elegant CLI application for arithmetic operations, designed with extensibility and ease of use at its core.
 
-## Features
+![Python Version](https://img.shields.io/badge/python-3.8%2B-blue.svg)
 
-- **Arithmetic Operations**: Supports basic operations like addition, subtraction, multiplication, and division.
-- **Dynamic Plugin System**: Facilitates the seamless addition of new functionalities through plugins.
-- **Calculation History Management**: Employs Pandas for efficient handling of calculation history.
-- **Professional Logging**: Implements comprehensive logging for operational insights and error tracking.
-- **Command Pattern Architecture**: Utilizes the command pattern for structured command execution within the REPL.
+</div>
 
-## Getting Started
+## 📜 Overview
+
+The **Advanced Calculator** is crafted to perform arithmetic calculations, leveraging a dynamic plugin system for seamless integration of functionalities. With Pandas for efficient history management and sophisticated logging, it stands as a robust tool for both simple and complex operations.
+
+## ✨ Features
+
+- **Arithmetic Mastery**: Expertly handles `addition`, `subtraction`, `multiplication`, and `division`.
+- **Expandable Ecosystem**: A dynamic plugin system invites endless possibilities.
+- **Historical Insights**: Employs Pandas for a comprehensive calculation history.
+- **Insightful Logging**: Advanced practices provide clarity and insight into operations.
+- **Structured Commands**: The command pattern ensures tidy command execution.
+
+## 🚀 Getting Started
 
 ### Prerequisites
 
-- Python 3.8+
-- Pip
+- 🐍 Python 3.8 or newer
+- 📦 Pip package manager
 
 ### Installation and Usage
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/mishraprajwal/AdvancedCalculator.git
-   cd advanced-calculator
+1. **Get the Code**:
+    ```bash
+    git clone https://github.com/mishraprajwal/AdvancedCalculator.git
+    cd advanced-calculator
+    ```
 
-2. Install dependencies:
+2. **Dependencies Away**:
     ```bash
     pip install -r requirements.txt
+    ```
 
-3. Run the application:
+3. **Launch**:
     ```bash
     python main.py
+    ```
 
-4. Usage
-Once the application is running, use the command line interface to perform calculations. Example commands include:
+4. **Calculate Away**:
+    Engage with the CLI for your mathematical needs. Examples:
+    - `>>> add 2 3` ➡️ `5`
+    - `>>> subtract 10 3` ➡️ `7`
+    - ... and more.
 
-add 2 3 - Adds the numbers.
-subtract 5 2 - Subtracts the second number from the first.
-multiply 4 2 - Multiplies the numbers.
-divide 8 2 - Divides the first number by the second.
-exit - Closes the application.
+## 🛠️ Extending the Application
 
-5. Extending the Application
-To add new commands or functionalities:
+Eager to contribute? Extend the calculator by:
+- Creating a module in `app/plugins`.
+- Defining a command class inheriting `BaseCommand`.
+- Your new command awakens upon next startup!
 
--> Create a new Python module in the app/plugins directory.
--> Define a new command class inheriting from BaseCommand and implement the execute method.
--> Ensure the module is named appropriately for automatic recognition and loading by the application.
+## 📖 Calculation History Management
 
-6. Calculation History Management
-The CalculationHistory class, utilizing Pandas, manages the history of calculations, supporting operations like loading, saving, clearing, and deleting records efficiently.
+Navigate through time with the `CalculationHistory` class—load, save, clear, or delete records with grace and efficiency.
 
-7. Logging
-Advanced logging practices are implemented, differentiating log messages by severity (INFO, WARNING, ERROR) and allowing for dynamic logging configuration through environment variables.
+## 📚 Logging
 
+Dive into the depths of operations with finely-tuned logging, categorizing messages for an insightful development and debugging experience.
 
+---
 
+Feel free to contribute, suggest features, or report issues. Together, let's make **Advanced Calculator** not just a tool, but a masterpiece of functionality and design. 🌟
+
+For more details on contributing and licensing, check out the respective sections or files in the repository.
+
+<div align="center">
+
+- by [Prajwal Karunesh Mishra - pm735@njit.edu](https://github.com/mishraprajwal)
+
+</div>
