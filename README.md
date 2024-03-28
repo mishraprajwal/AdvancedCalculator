@@ -32,7 +32,6 @@ The **Advanced Calculator** is crafted to perform arithmetic calculations, lever
 1. **Get the Code**:
     ```bash
     git clone https://github.com/mishraprajwal/AdvancedCalculator.git
-    cd advanced-calculator
     ```
 
 2. **Dependencies Away**:
