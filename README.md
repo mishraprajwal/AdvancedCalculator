@@ -79,3 +79,7 @@ pytest
 pytest --pylint
 ```
 
+```bash
+pytest --pylint --cov
+```
+
