@@ -46,8 +46,8 @@ The **Advanced Calculator** is crafted to perform arithmetic calculations, lever
 
 4. **Calculate Away**:
     Engage with the CLI for your mathematical needs. Examples:
-    - `>>> add 2 3` ➡️ `5`
-    - `>>> subtract 10 3` ➡️ `7`
+    - `>>> add 2 3`
+    - `>>> subtract 10 3`
     - ... and more.
 
 ## 🛠️ Extending the Application
