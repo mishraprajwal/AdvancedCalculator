@@ -37,7 +37,9 @@ class CalculationHistory:
 
     def add_record(self, operation, result):
         new_record = pd.DataFrame([{'Operation': operation, 'Result': result}])
-        self.history_df = pd.concat([self.history_df, new_record], ignore_index=True)
+        # Before concatenation, ensure no columns are entirely NA or empty
+        non_na_columns = new_record.dropna(axis=1, how='all').columns
+        self.history_df = pd.concat([self.history_df[non_na_columns], new_record[non_na_columns]], ignore_index=True)
         self.save_history()
         AdvancedLoggingUtility.info("Record added", operation=operation, result=result)
 
