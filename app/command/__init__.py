@@ -17,26 +17,22 @@ class CommandHandler:
         AdvancedLoggingUtility.info(f"Command '{command_name}' registered.")
 
     def execute_command(self, command_input: str):
-        """
-        Parses the command input and executes the command if found,
-        passing along any arguments.
-        """
-        parts = command_input.split()  # Split the input into parts
+        parts = command_input.split()
         if not parts:
-            AdvancedLoggingUtility.warning("Empty command input.")
+            AdvancedLoggingUtility.warning("No command provided.")
             return
         
         command_name, *args = parts
-        try:
-            if command_name in self.commands:
-                self.commands[command_name].execute(*args)
-                AdvancedLoggingUtility.info(f"Command '{command_name}' executed with arguments: {args}")
-            else:
-                raise KeyError(f"No such command: '{command_name}'")
-        except KeyError as e:
-            error_msg = str(e)
+        if command_name not in self.commands:
+            error_msg = f"No such command: '{command_name}'"
             AdvancedLoggingUtility.error(error_msg)
-            print(error_msg)  # Optionally, consider if you still want to keep this print statement
+            print(error_msg)  # Printing the error message for direct user feedback
+            return  # Early return to stop execution if command is not found
+
+        try:
+            # At this point, command_name is guaranteed to be in self.commands
+            self.commands[command_name].execute(*args)
+            AdvancedLoggingUtility.info(f"Command '{command_name}' executed with arguments: {args}")
         except Exception as e:
             error_msg = f"An error occurred during execution of command '{command_name}': {e}"
             AdvancedLoggingUtility.error(error_msg, exception=str(e), command=command_name)

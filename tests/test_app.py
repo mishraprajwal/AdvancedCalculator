@@ -35,7 +35,7 @@ def test_app_start_unknown_command(capfd, monkeypatch):
     with pytest.raises(SystemExit) as excinfo:
         app.start()
 
-    # Assert that the exit code is 0, indicating a successful exit
+# Assert that the exit code is 0, indicating a successful exit
     assert excinfo.value.code == 0, "Application should exit with status code 0"
 
     # Optionally, check for the presence of the unknown command error message in the output
