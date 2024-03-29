@@ -77,3 +77,7 @@ class CalculationHistory:
             AdvancedLoggingUtility.warning("Attempted to delete record, but index does not exist.", 
                                            index=index)
             return False
+        
+    @classmethod
+    def _reset_instance_for_testing(cls):
+        cls._instance = None
