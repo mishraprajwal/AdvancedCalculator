@@ -36,7 +36,6 @@ class CalculationHistory:
         return pd.DataFrame(columns=['Operation', 'Result'])
 
     def add_record(self, operation, result):
-        # Correctly appending a new record to the DataFrame
         new_record = pd.DataFrame([{'Operation': operation, 'Result': result}])
         self.history_df = pd.concat([self.history_df, new_record], ignore_index=True)
         self.save_history()
