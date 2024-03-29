@@ -85,7 +85,7 @@ pytest --pylint --cov
 
 <div align="center">
 
-- by [Prajwal Karunesh Mishra - pm735@njit.edu](https://github.com/mishraprajwal)
+by [Prajwal Karunesh Mishra - pm735@njit.edu](https://github.com/mishraprajwal)
 
 </div>
 
