@@ -65,14 +65,17 @@ Navigate through time with the `CalculationHistory` class—load, save, clear, o
 
 Dive into the depths of operations with finely-tuned logging, categorizing messages for an insightful development and debugging experience.
 
----
+## 🧪 Testing
 
-Feel free to contribute, suggest features, or report issues. Together, let's make **Advanced Calculator** not just a tool, but a masterpiece of functionality and design. 🌟
+Our application is committed to quality and reliability, as demonstrated through comprehensive test coverage. We utilize `pytest` for testing various components, ensuring that each functionality behaves as expected. Tests cover command execution, calculation history management, and the dynamic plugin system.
 
-For more details on contributing and licensing, check out the respective sections or files in the repository.
+To run the tests:
 
-<div align="center">
+```bash
+pytest
+```
 
-- by [Prajwal Karunesh Mishra - pm735@njit.edu](https://github.com/mishraprajwal)
+```bash
+pytest --pylint
+```
 
-</div>
