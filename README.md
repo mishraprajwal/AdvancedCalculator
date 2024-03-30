@@ -27,24 +27,39 @@ The **Advanced Calculator** is crafted to perform arithmetic calculations, lever
 - 🐍 Python 3.8 or newer
 - 📦 Pip package manager
 
-### Installation and Usage
+### Installation, Usage and Setting Up the Development Environment
 
 1. **Get the Code**:
     ```bash
     git clone https://github.com/mishraprajwal/AdvancedCalculator.git
     ```
 
-2. **Dependencies Away**:
+For an optimal development experience and to manage dependencies effectively, it's recommended to set up a virtual environment for the Advanced Python Calculator project. Below are the steps to create and activate a virtual environment on Unix-based systems:
+
+2. **Create a Virtual Environment**:
+   Navigate to the project's root directory and execute the following command to create a virtual environment named `venv`. This isolates the project's dependencies from the global Python environment.
+
+   ```bash
+   virtualenv venv
+   ```
+   To activate the virtual environment.
+
+   ```bash
+   source ./venv/bin/activate
+   ```
+
+
+3. **Dependencies Away**:
     ```bash
     pip install -r requirements.txt
     ```
 
-3. **Launch**:
+4. **Launch**:
     ```bash
     python main.py
     ```
 
-4. **Calculate Away**:
+5. **Calculate Away**:
     Engage with the CLI for your mathematical needs. Examples:
     - `>>> add 2 3`
     - `>>> subtract 10 3`
