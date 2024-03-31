@@ -100,7 +100,6 @@ pytest --pylint --cov
 
 Check out the [Demo Video](https://drive.google.com/file/d/1jrOG-yCpbuObn-Dgn72jXt0hkQmFJTgt/view?usp=drive_link) of the Advanced Python Calculator in action
 
-
 <div align="center">
 
 by [Prajwal Karunesh Mishra - pm735@njit.edu](https://github.com/mishraprajwal)
